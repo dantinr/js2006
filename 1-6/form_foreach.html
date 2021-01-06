@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="user.php" method="post">
+    用户名： <input type="text" name="username"> <br>
+    手机号: <input type="text" name="mobile"> <br>
+    Email: <input type="email" name="email"> <br>
+    密码： <input type="password" name="pass1" autocomplete=""> <br>
+    确认密码: <input type="password" name="pass2" autocomplete=""> <br>
+    <input type="submit" value="注册">
+</form>
+
+<script>
+    var f = document.forms[0]
+    var inputs = f.getElementsByTagName("input")
+    var inputs = f.querySelectorAll("input")
+    console.log(inputs)
+
+    // 第一种遍历方式 forEach
+    inputs.forEach(function(v,k){
+        console.log(k)
+        console.log(v)
+    })
+
+    //第二种遍历方式 for
+    for(var i=0;i<inputs.length;i++)
+    {
+        console.log(inputs[i])
+    }
+</script>
+</body>
+</html>

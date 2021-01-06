@@ -2,12 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>用户注册</title>
 </head>
 <body>
-    <a id="a" href="https://www.baidu.com">BAIDU</a>
-
-
+    <h1>用户注册</h1>
     <form action="reg.php">
         用户名： <input type="text" name="username"> <br>
         手机号： <input type="text" name="mobile"> <br>
@@ -16,32 +14,6 @@
         确认密码： <input type="password" name="pass2"> <br>
         <input type="submit" value="注册">
     </form>
-
     <script src="main.js"></script>
-    <script>
-
-        document.getElementById("a").addEventListener('click',
-            function(ev){
-                ev.preventDefault()        //点击 连接不跳转
-            })
-
-
-        var form = document.forms[0]
-
-        form.submit = function(){
-            alert(22222)
-        }
-        console.log(form)
-
-        form.addEventListener('submit',function(ev){
-            ev.preventDefault()
-            var username = this.username.value
-            var mobile = this.elements['mobile'].value
-            console.log(username)
-            console.log(mobile)
-        })
-
-
-    </script>
 </body>
 </html>

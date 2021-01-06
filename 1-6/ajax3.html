@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>AjaxPOST数据</h1>
+
+
+    <script>
+        // 1 实例化 XHR
+        var xhr = new XMLHttpRequest()
+
+        // 2 监听 redayState
+        xhr.onreadystatechange = function (){
+            if(xhr.readyState==xhr.DONE){
+                if(xhr.status==200){
+                    var json_str = xhr.responseText     //接收服务器响应的数据
+                    console.log(json_str)
+                    var json_obj = JSON.parse(json_str)     //将 json字符串 转 成 js对象
+
+                    console.log(json_obj.goods_id)
+                    console.log(json_obj.goods_name)
+                    console.log(json_obj.shop_price)
+
+                }
+            }
+        }
+
+        // 3
+        xhr.open("POST",'user.php')
+
+        //设置请求头信息， 告诉服务 发送的数据格式
+        // 发送 form-data形式数据  PHP使用 $_POST
+        //数据格式 key1=val1&key2=val2...
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        //xhr.setRequestHeader('Content-Type', 'application/json');           // php 使用 file_get_contents("php://input")
+
+
+        // 4 send
+        var obj = {
+            name: "zhangsan",
+            age: 22,
+            email: "zhangsan@qq.com"
+        }
+
+
+        xhr.send(json_str)          // key1=val1&key2=val2...
+        xhr.send( JSON.stringify(obj) ) // 发送 json字符换
+    </script>
+</body>
+</html>

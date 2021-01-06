@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>querySelector</h1>
+
+    <a href="https://www.baidu1.com">baidu1</a>
+    <a href="https://www.baidu2.com">baidu2</a>
+    <a href="https://www.baidu3.com">baidu3</a>
+
+    <p id="p1">Hello World</p>
+
+
+
+    <div id="div1">
+        <span class="qs">AAAA</span>
+        <span class="qs">BBBB</span>
+        <span class="qs">CCCC</span>
+        <span class="qs">DDDD</span>
+    </div>
+
+
+    <script>
+
+        var qs = document.querySelector("#div1").querySelectorAll(".qs")
+        console.log(qs)
+
+        // var qs = document.querySelectorAll(".qs")
+        // console.log(qs)
+
+        //var as = document.getElementsByTagName("a")
+        // var as2 = document.querySelector("a")
+        // var as3 = document.querySelectorAll("a")
+        // console.log(as2)
+        // console.log(as3)
+        //
+        // var p1 = document.querySelector("#p1")
+        // console.log(p1)
+
+
+
+    </script>
+</body>
+</html>

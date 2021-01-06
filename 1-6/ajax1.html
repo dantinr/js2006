@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>异步 Asynchronous</h1>
+
+    <button>
+
+    </button>
+
+    <script>
+        function ajax(){
+            console.log('aaaa')
+
+            // 1 实例化 XHR
+            var xhr = new XMLHttpRequest()
+
+            // 2 监听 readyState 值
+            xhr.onreadystatechange = function(){
+                //console.log(xhr.readyState)
+                if (xhr.readyState === xhr.DONE) {
+                    if (xhr.status === 200) {
+                        console.log('bbbb')
+
+                    } else {
+                        alert('XXXXXX');
+                    }
+                }
+            }
+
+            // 3 open
+            xhr.open('GET','/api.php')
+
+            // 4 send
+            xhr.send()
+
+            console.log('cccc')
+
+        }
+    </script>
+
+    <script>
+
+        console.log(1111)
+        console.log(2222)
+
+        ajax()
+
+        console.log(3333)
+        console.log(4444)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+
+    <body>
+        <div id="div1">
+            <div id="div2">
+                <p>AAAA</p>
+                <p>BBBB</p>
+                <p>CCCC</p>
+            </div>
+        </div>
+
+
+        <div id="div3"></div>
+    </body>
+
+    <script>
+        //var oDiv2 = document.getElementById("div2")
+        var oDiv2 = document.querySelector("#div2")
+
+        var ps1 = oDiv2.childNodes   //获取div2的子结点
+        var ps2 = oDiv2.children   //获取div2的子结点
+        console.log(ps)
+
+        // var p = oDiv2.parentElement         //获取 div2的父元素节点
+        // console.log(p)
+    </script>
+</html>

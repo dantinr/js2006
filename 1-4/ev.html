@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form action="api.php" method="post">
+
+        <button id="btn1"> + </button>
+        <button id="btn2"> - </button>
+    </form>
+
+    <script>
+        var oBtn1 = document.getElementById("btn1")
+        oBtn1.addEventListener('click',function(ev){
+            var form = document.forms[0]
+            ev.preventDefault()
+            var oInput = document.createElement("input")
+            oInput.type = "text"
+            oInput.setAttribute("name","uname[]")
+            oInput.setAttribute("placeholder","请输入")
+            console.log(oInput)
+            form.insertBefore(oInput,this)
+        })
+    </script>
+</body>
+</html>

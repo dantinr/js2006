@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Ajax发送请求</h1>
+
+    <button id="btn1">227</button>
+    <button id="btn2">219</button>
+
+    <script>
+
+        document.getElementById("btn1").addEventListener('click',function(){
+            //获取 218
+            var id = this.innerText
+
+            // 发送 ajax
+            // 1 实例化 XHR
+            var xhr = new XMLHttpRequest()
+
+            // 2 监听 redayState
+            xhr.onreadystatechange = function (){
+                if(xhr.readyState==xhr.DONE){
+                    if(xhr.status==200){
+                        var json_str = xhr.responseText     //接收服务器响应的数据
+                        console.log(json_str)
+                        var json_obj = JSON.parse(json_str)     //将 json字符串 转 成 js对象
+
+                        console.log(json_obj.goods_id)
+                        console.log(json_obj.goods_name)
+                        console.log(json_obj.shop_price)
+
+                    }
+                }
+            }
+
+            // 3
+            xhr.open("GET",'goods.php?id=' + id)
+
+            // 4 send
+            xhr.send()
+
+
+        })
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

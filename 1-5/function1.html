@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Function1</h1>
+
+
+<script>
+
+    var arr = []
+    var obj = {
+        name : "zhangsan",
+        age: 22,
+        email: "zhangsan@qq.com"
+    }
+
+    var json = "{'name':'zhangsan','age':22,'email':'zhangsan@qq.com'}"
+    var a = 100
+    var b = 200
+    var c = abc(a,b)
+    console.log(c)
+    var d = xyz(a,b)        // 300
+    console.log(d)
+
+    //两个数相加 函数声明
+    function abc(a,b){
+        return a+b
+    }
+
+    //函数表达式
+    var xyz = function(a,b){
+        return a+b
+    }
+
+</script>
+</body>
+</html>

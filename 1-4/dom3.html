@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <a href="" class="as">AAAA</a>
+    <a href="" class="as">BBBB</a>
+    <a href="" class="as">CCCC</a>
+    <a href="" class="as">DDDD</a>
+
+    <button id="btn1">BTN1</button>
+
+
+    <script>
+        var btn1 = document.getElementById("btn1")
+        btn1.addEventListener('click',function(){
+            //先找到要删除的节点
+            document.getElementsByClassName("as")[1].remove()
+        })
+    </script>
+</body>
+</html>

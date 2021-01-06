@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // 1 实例化 XHR
+    var xhr = new XMLHttpRequest()
+
+    // 2 监听 readyState 值
+    xhr.onreadystatechange = function(){
+        //console.log(xhr.readyState)
+        if (xhr.readyState === xhr.DONE) {
+            if (xhr.status === 200) {
+                // var json_str = xhr.responseText     //接收 服务器的响应数据 （json字符串）
+                // console.log(json_str)
+                // var obj = JSON.parse(json_str)
+                // console.log(obj)
+                // console.log(obj.name)
+
+            } else {
+                alert('XXXXXX');
+            }
+        }
+    }
+
+    // 3 open
+    //xhr.open('GET','api2.php?id=124&name=zhangsan')
+    xhr.open('POST','api2.php')
+
+    // 4 send
+    var data = {name:"lisi",age:22,email:"lisi@qq.com"}
+
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    var str = ""
+    for(k in data){
+        str += k + "=" + data[k] + "&"
+    }
+    console.log(str)
+
+    //删除最后一个 &
+    str = str.substring(str.length-1)
+
+    console.log(str)
+    xhr.send(str)
+
+
+
+</script>
+</body>
+</html>

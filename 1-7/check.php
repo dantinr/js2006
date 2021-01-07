@@ -8,7 +8,7 @@ $pdo = getPdo();        //获取 pdo对象
 $username = $_GET['name'];
 
 //查询数据库
-$sql = "select * from p_users where user_name='{$username}'";
+$sql = "select * from p_users where user_name='{$username}' or mobile='{$username}' or email='{$username}'";
 $res = $pdo->query($sql);
 $data = $res->fetch(PDO::FETCH_ASSOC);
 
@@ -16,7 +16,7 @@ if($data)       //用户名不可用
 {
     $response = [
         'errno' => 400020,
-        'msg'   => "用户名已存在"
+        'msg'   => "已存在"
     ];
 }else{
     $response = [

@@ -1,8 +1,5 @@
-// input 失去焦点事件 获取input值
-document.getElementById("username").addEventListener('blur',function(){
-    var username = this.value
-
-    // 发送ajax请求，查询 当前用户名是否可用
+function ajax(param,node)
+{
     // 1 实例化 xhr
     var xhr = new XMLHttpRequest()
     // 2 监听 readyState
@@ -16,13 +13,47 @@ document.getElementById("username").addEventListener('blur',function(){
             if(json_obj.errno>0)
             {
                 alert(json_obj.msg)
+                node.value = ""         //清空 input
+                node.focus()            //获取焦点
             }
         }
     }
     // 3 open
-    xhr.open("GET","check.php?name="+username);
+    xhr.open("GET","check.php?name="+ param );
 
     // 4 send
     xhr.send()
+}
 
+
+// mobile input 失去焦点
+document.getElementById("email").addEventListener('blur',function(){
+    if(this.value == "")
+    {
+        return
+    }
+    var email = this.value
+    ajax(email,this)
+})
+
+// mobile input 失去焦点
+document.getElementById("mobile").addEventListener('blur',function(){
+    if(this.value == "")
+    {
+        return
+    }
+    var mobile = this.value
+
+    ajax(mobile,this)
+})
+
+
+// username input 失去焦点事件 获取input值
+document.getElementById("username").addEventListener('blur',function(){
+    var username = this.value
+    if(username=="")
+    {
+        return
+    }
+    ajax(username,this)
 })

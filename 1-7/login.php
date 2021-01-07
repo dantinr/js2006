@@ -3,25 +3,38 @@
     include "pdo.php";
 
     $pdo = getPdo();
-    //接收 post参数
+    $name = $_POST['username'];     //用户名 Email Mobile
+    $pass = $_POST['pass'];
+
 
     // 验证用户名是否存在
-    $sql = "select ... ";
+    $sql = "select * from p_users where user_name='{$name}' or email='{$name}' or mobile='{$name}'";
     $res = $pdo->query($sql);
+    $data = $res->fetch(PDO::FETCH_ASSOC);
 
-    if()       //查询到用户
+    if($data)       //查询到用户
     {
         //验证密码
-        if(password_verify()){       //密码正确 登录成功
-
+        if(password_verify($pass,$data['password'])){       //密码正确 登录成功
+            $response = [
+                'errno' => 0,
+                'msg'   => 'ok'
+            ];
         }else{  //密码不正确 登录失败
-
+            $response = [
+                'errno' => 400012,
+                'msg'   => '密码不正确'
+            ];
         }
-    }else{   //查询不到用户
-
+    }else{
+        $response = [
+            'errno' => 400003,
+            'msg'   => '用户名或密码错误'
+        ];
     }
 
-    //返回json数据
+
+    echo json_encode($response);
 
 
 

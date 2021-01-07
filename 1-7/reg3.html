@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+</head>
+<body>
+    <h1>Jquey Ajax</h1>
+    <form action="reg.php">
+        用户名： <input type="text" name="username" id="username"> <br>
+        手机号： <input type="text" name="mobile" id="mobile"> <br>
+        Email： <input type="text" name="email" id="email"> <br>
+        密码： <input type="password" name="pass1" autocomplete=""> <br>
+        确认密码： <input type="password" name="pass2" autocomplete=""> <br>
+        <input type="submit" value="注册">
+    </form>
+
+    <script src="/jquery-3.5.1.min.js"></script>
+    <script>
+
+        // username input 的 失去焦点事件
+        $("#username").on('blur',function(){
+            //var self = this         // js对象
+            var self = $(this)      // jquery对象
+            var name = self.val()
+
+            if(name=="")
+            {
+                return
+            }
+
+            $.ajax({
+                url: 'check.php',       //请求的接口地址
+                method: "GET",          //请求的方法
+                dataType: 'json',       // 将服务器返回的json转JS对象
+                data: {name:name}       // 发送的数据
+            }).done(function(d){     // 请求成功后回调函数 d 为服务器响应的数据
+                if(d.errno>0){      //异常
+                    alert(d.msg)
+                    self.val("")       //清空 input
+                    self.focus()        //重新获取焦点
+                }
+            });
+        })
+
+    </script>
+</body>
+</html>

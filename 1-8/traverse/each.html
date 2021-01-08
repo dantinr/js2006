@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li>foo</li>
+        <li>bar</li>
+    </ul>
+
+    <script src="/jquery-3.5.1.min.js"></script>
+    <script>
+        $("li").each(function(index){
+            console.log($(this).text())
+        })
+    </script>
+</body>
+</html>

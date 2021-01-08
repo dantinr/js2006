@@ -23,9 +23,21 @@
         <li class="item-iii">III</li>
     </ul>
 
+    <ul id="ul1">
+        <li class="li1">AAA</li>
+        <li class="li1">AAA</li>
+        <li class="li1">AAA</li>
+    </ul>
+
+    <ul id="ul2">
+        <li class="li1">BBB</li>
+        <li class="li1">BBB</li>
+        <li class="li1">BBB</li>
+    </ul>
 <script src="/jquery-3.5.1.min.js"></script>
     <script>
         $('li.item-a').parent().css('background-color', 'red');
+        console.log( $(".li1").parent() )
     </script>
 </body>
 </html>

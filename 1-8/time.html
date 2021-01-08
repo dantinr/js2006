@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器</title>
+
+    <style>
+        .divs {
+            width: 100px;height: 100px;border: 5px solid #eeeeee;background-color: #eeeeee;
+            margin: 10px;
+            float:left;
+        }
+
+        #app {
+            width: 400px;
+            height: 400px;
+            float: left;
+        }
+
+        .border { border: 5px solid red}
+    </style>
+</head>
+<body>
+
+    <h1>定时器+抽奖</h1>
+
+    <div id="app">
+        <div class="divs"></div>
+        <div class="divs"></div>
+        <div class="divs"></div>
+        <div class="divs"></div>
+        <div class="divs"></div>
+        <div class="divs"></div>
+        <div class="divs"></div>
+        <div class="divs"></div>
+        <div class="divs"></div>
+    </div>
+
+    <hr>
+    <button id="btn1">开始</button>
+    <button id="btn2">停止</button>
+
+    <script src="/jquery-3.5.1.min.js"></script>
+
+    <script>
+
+        $("#btn1").click(function(){
+            var divs = $(".divs")       //获取 div
+            divs.empty()        // 清除 div中内容
+            var t = setInterval(function(){         //开启定时器
+                divs.removeClass('border')          //清除之前保留的样式
+                var rand_num = Math.random() * 10     //生成 浮点数
+                var num = parseInt(rand_num)
+                var index = num % 9
+                divs.eq(index).addClass('border')       //添加选中样式
+            },100)
+
+            //停止
+            $("#btn2").click(function (){
+                var divs = $(".divs")
+                $.ajax({
+                    url: 'prize.php',
+                    method: 'get',
+                    dataType: 'json'
+                }).done(function(d){         //请求成功 回调函数 d为服务返回的数据
+                    //清除定时器
+                    clearInterval(t)        //  清除定时器
+                    divs.each(function(index){      // 遍历 div
+                        if($(this).hasClass('border')){     //找到 包含选中样式的div
+                            divs.eq(index).append(d.msg)        //在选中的div中显示中奖信息
+                        }
+                    })
+                    $("#btn2").unbind('click')          // 删除 之前绑定的事件，防止事件叠加
+                })
+
+            })
+
+        })
+
+    </script>
+</body>
+</html>

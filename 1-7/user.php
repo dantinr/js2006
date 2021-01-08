@@ -2,6 +2,7 @@
 
     include "pdo.php";
 
+    echo '<pre>';print_r($_POST);echo '</pre>';die;
     $user_name = $_POST['username'];
     $mobile = $_POST['mobile'];
     $email = $_POST['email'];

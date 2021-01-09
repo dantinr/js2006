@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>JS倒计时</h1>
+
+    放假倒计时： <span id="time1"></span>
+
+    <script src="functions.js"></script>
+    <script>
+        // 1 实例化 XMLHttpRequest()
+        var xhr = new XMLHttpRequest()
+
+        // 2 readyState
+        xhr.onreadystatechange = function()
+        {
+            if(xhr.readyState==4 && xhr.status==200)
+            {
+                //接收服务器响应的数据
+                var json_str = xhr.responseText
+                var obj = JSON.parse(json_str)
+
+                var seconds = obj.data.seconds
+
+                setInterval(function(){
+                    seconds--
+                    document.getElementById("time1").innerText = getDate2(seconds)
+                },1000)
+
+            }
+        }
+
+        // 3 open
+        xhr.open('get','time.php')
+
+        // 4 send
+        xhr.send()
+
+
+    </script>
+
+</body>
+</html>

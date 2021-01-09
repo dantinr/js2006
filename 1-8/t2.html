@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    剩余时间： <span id="p1"></span>
+
+</div>
+
+<script>
+
+    var end = 12345
+    setInterval(function(){
+        var h = end / 3600           //剩余小时数  向下取整
+        //console.log(Math.floor(h))
+        h = Math.floor(h)
+        if(h<10){h = '0'+h}
+        var i = end / 60             //剩余分钟数
+        if(i<10){i = '0'+i}
+        //console.log(Math.floor(i) % 60)
+        i = Math.floor(i) % 60
+        var s = end % 60          //剩余的秒数
+        if(s<10){h = '0'+s}
+        var his = h + ":" + i + ":" + s
+        console.log(his)
+        end--;
+        document.getElementById("p1").innerText = his
+    },1000)
+
+
+
+</script>
+</body>
+</html>

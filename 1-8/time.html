@@ -17,7 +17,7 @@
             float: left;
         }
 
-        .border { border: 5px solid red}
+        .border { border: 5px solid red;background-color: red}
     </style>
 </head>
 <body>
@@ -44,9 +44,22 @@
 
     <script>
 
+        var timers = []
         $("#btn1").click(function(){
+
+            console.log(timers)
+            //清除定时器
+            for(var j=0;j<timers.length;j++)
+            {
+                console.log(11111)
+                console.log("t: " + timers[j])
+                clearInterval(timers[j])
+                console.log(22222)
+
+            }
+
             var divs = $(".divs")       //获取 div
-            divs.empty()        // 清除 div中内容
+
             var t = setInterval(function(){         //开启定时器
                 divs.removeClass('border')          //清除之前保留的样式
                 var rand_num = Math.random() * 10     //生成 浮点数
@@ -55,22 +68,26 @@
                 divs.eq(index).addClass('border')       //添加选中样式
             },100)
 
+            timers.push(t)
+
             //停止
             $("#btn2").click(function (){
+
                 var divs = $(".divs")
                 $.ajax({
                     url: 'prize.php',
                     method: 'get',
                     dataType: 'json'
                 }).done(function(d){         //请求成功 回调函数 d为服务返回的数据
-                    //清除定时器
-                    clearInterval(t)        //  清除定时器
+                    divs.empty()        // 清除 div中内容
                     divs.each(function(index){      // 遍历 div
                         if($(this).hasClass('border')){     //找到 包含选中样式的div
                             divs.eq(index).append(d.msg)        //在选中的div中显示中奖信息
                         }
                     })
                     $("#btn2").unbind('click')          // 删除 之前绑定的事件，防止事件叠加
+
+
                 })
 
             })

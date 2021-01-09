@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>当前时间</title>
+</head>
+<body>
+
+<div>
+    当前时间： <span id="p1"></span>
+
+</div>
+
+<script>
+
+    setInterval(function(){
+        var t = new Date()
+        //console.log(t)
+        var y = t.getFullYear()
+        //console.log(y)
+        var m = t.getMonth() + 1
+        //console.log(m)
+        var d = t.getDate()
+        //console.log(d)
+        var h = t.getHours()
+        if(h<10){
+            h = '0'+h
+        }
+        //console.log(h)
+        var i = t.getMinutes()
+        if(i<10){
+            i = '0'+i
+        }
+        //console.log(i)
+        var s = t.getSeconds()
+        if(s<10){
+            s = '0'+s
+        }
+        //console.log(s)
+        var ms = t.getMilliseconds()
+        //console.log(ms)
+        //console.log(11111)
+        var ymd = y + '-' + m + '-' + d + ' ' + h + ':' + i + ':' + s;
+        console.log(ymd)
+        document.getElementById("p1").innerText = ymd
+    },1000)
+
+
+
+</script>
+</body>
+</html>

@@ -8,6 +8,15 @@ const week = [
     '星期六',
 ]
 
+//清除所有定时器
+function clearAllTimers(t)
+{
+    for(var i=0;i<t.length;i++)
+    {
+        clearInterval(t[i])
+    }
+}
+
 //格式化倒计时
 function getDate2(seconds,type=1){
 

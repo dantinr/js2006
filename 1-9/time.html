@@ -49,11 +49,13 @@
     <script>
 
         var seconds = 5       //剩余时间  可从接口获取
+        var timers = [];
 
         var t1 = setInterval(function(){
             if(seconds==0){
                 alert("时间到")
-                clearInterval(t1)
+                clearInterval(t1)           //清除当前定时器
+                clearAllTimers(timers)        //清除所有定时器
 
                 //禁用抽奖按钮
                 $("#btn1").attr("disabled","disabled")

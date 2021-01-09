@@ -45,20 +45,18 @@
     <script>
 
         var timers = []
+        //开始抽奖
         $("#btn1").click(function(){
 
-            console.log(timers)
-            //清除定时器
+            //清除之前的定时器
             for(var j=0;j<timers.length;j++)
             {
-                console.log(11111)
-                console.log("t: " + timers[j])
                 clearInterval(timers[j])
-                console.log(22222)
-
+                timers.splice(j,1)          //删除 定时器数组中的当前定时器
             }
 
             var divs = $(".divs")       //获取 div
+            divs.empty()                //清空之前的内容
 
             var t = setInterval(function(){         //开启定时器
                 divs.removeClass('border')          //清除之前保留的样式
@@ -79,6 +77,14 @@
                     method: 'get',
                     dataType: 'json'
                 }).done(function(d){         //请求成功 回调函数 d为服务返回的数据
+                    //清除定时器
+                    for(var j=0;j<timers.length;j++)
+                    {
+                        console.log(timers[j])
+                        clearInterval(timers[j])
+                        timers.splice(j,1)
+                    }
+
                     divs.empty()        // 清除 div中内容
                     divs.each(function(index){      // 遍历 div
                         if($(this).hasClass('border')){     //找到 包含选中样式的div
@@ -86,7 +92,6 @@
                         }
                     })
                     $("#btn2").unbind('click')          // 删除 之前绑定的事件，防止事件叠加
-
 
                 })
 

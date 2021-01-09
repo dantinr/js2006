@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    <button id="btn1">BTN1</button>
+    <button id="btn2">BTN2</button>
+    <button id="btn3">BTN3</button>
+
+    <button id="show">显示定时器</button>
+    <script>
+
+        var timers = []
+
+        document.getElementById("btn1").addEventListener('click',function(){
+            var t1 = setInterval(function(){
+                //console.log('btn1')
+            },1000)
+            timers.push(t1)
+        })
+        document.getElementById("btn2").addEventListener('click',function(){
+            var t2 = setInterval(function(){
+                //console.log('btn2')
+            },1000)
+            timers.push(t2)
+        })
+        document.getElementById("btn3").addEventListener('click',function(){
+            var t3 = setInterval(function(){
+                //console.log('btn3')
+            },1000)
+            timers.push(t3)
+
+        })
+        document.getElementById("show").addEventListener('click',function(){
+            console.log(timers)
+        })
+    </script>
+</body>
+</html>

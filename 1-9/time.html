@@ -48,7 +48,7 @@
 
     <script>
 
-        var seconds = 5       //剩余时间  可从接口获取
+        var seconds = 500       //剩余时间  可从接口获取
         var timers = [];
 
         var t1 = setInterval(function(){
@@ -67,15 +67,13 @@
         },1000)
 
         var timers = []
+
         //开始抽奖
         $("#btn1").click(function(){
 
-            //清除之前的定时器
-            for(var j=0;j<timers.length;j++)
-            {
-                clearInterval(timers[j])
-                timers.splice(j,1)          //删除 定时器数组中的当前定时器
-            }
+            //清除之前的定时器 防止定时器叠加
+            clearAllTimers(timers)
+            timers.splice(0,timers.length)
 
             var divs = $(".divs")       //获取 div
             divs.empty()                //清空之前的内容
@@ -88,7 +86,7 @@
                 divs.eq(index).addClass('border')       //添加选中样式
             },100)
 
-            timers.push(t)
+            timers.push(t)          //保存定时器id
 
             //停止
             $("#btn2").click(function (){
@@ -100,12 +98,8 @@
                     dataType: 'json'
                 }).done(function(d){         //请求成功 回调函数 d为服务返回的数据
                     //清除定时器
-                    for(var j=0;j<timers.length;j++)
-                    {
-                        console.log(timers[j])
-                        clearInterval(timers[j])
-                        timers.splice(j,1)
-                    }
+                    clearAllTimers(timers)
+                    timers.splice(0,timers.length)
 
                     divs.empty()        // 清除 div中内容
                     divs.each(function(index){      // 遍历 div

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <button id="btn1">BTN1</button>
+    <button id="btn2">BTN2</button>
+    <button id="btn3">BTN3</button>
+    <hr>
+    <button id="t">显示定时器</button>
+    <button id="clearOne">清除指定定时器</button>
+    <button id="clearAll">清除所有定时器</button>
+
+    <script>
+
+        var timers = []         //保存当前页面中的所有定时器id
+
+        document.getElementById("btn1").addEventListener('click',function(){
+            console.log("点击了 btn1")
+            var tid = setInterval(function (){
+                console.log(111)
+            },1000)
+            timers.push(tid)
+        })
+
+        document.getElementById("t").addEventListener('click',function(){
+            console.log(timers)
+        })
+
+        //清除指定定时器
+        document.getElementById('clearOne').addEventListener('click',function(){
+            clearInterval()            //根据定时器id清除指定的定时器
+        })
+
+
+        //清除页面中所有的定时器
+        document.getElementById("clearAll").addEventListener('click',function(){
+            //遍历 保存定时器id的数组 timers
+            for(var i=0;i<timers.length;i++)
+            {
+                //根据定时器id删除定时器
+                clearInterval(timers[i])
+                //删除定时器数组中的 定时器id
+            }
+            timers.splice(0,timers.length)        //从下标0开始删除 删除全部
+            console.log("已清除所有的定时器")
+        })
+
+
+    </script>
+</body>
+</html>

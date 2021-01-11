@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+</head>
+<body>
+    <h1>个人中心</h1>
+
+    <h2 id="p1"> <span id="seconds">3</span>秒后获取用户信息</h2>
+    <script src="/jquery-3.5.1.min.js"></script>
+    <script src="function.js"></script>
+    <script>
+        num = 3;
+        var t1 = setInterval(function(){
+            console.log(num)
+            if(num==0){
+                clearInterval(t1)
+                return
+            }
+            num--
+            document.getElementById("seconds").innerText = num
+        },1000)
+        var t2 = setTimeout(function(){
+            var name = getCookie('username')        //获取cookie中的user_name
+            var uid = getCookie('uid')              //获取cookie中的 uid
+
+            $.ajax({
+                url: 'api.php',
+                method: 'get',
+                dataType: 'json',
+                data:{uid:uid,name:name}
+            }).done(function(res){
+                console.log(res)
+                if(res.errno>0) //出错
+                {
+                    alert(res.msg)
+                }else{
+                    //在页面中显示用户信息  创建dom
+
+                }
+            })
+        },3000)
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var xhr = new XMLHttpRequest()
+
+    // 2 监听 readyState == 4
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState==4 && xhr.status==200)
+        {
+
+        }
+    }
+
+    // 3 open
+    xhr.open("get","api.php")
+    //设置 http请求头
+    xhr.setRequestHeader("uid",1234)
+    xhr.send()
+</script>
+</body>
+</html>

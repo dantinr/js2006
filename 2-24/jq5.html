@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1 {
+            width: 500px;
+            height: 500px;
+            background-color: yellow;
+        }
+
+        #div2 {
+            width: 400px;
+            height: 400px;
+            background-color: red;
+            margin: 50px;
+        }
+
+        #div3 {
+            width: 300px;
+            height: 300px;
+            background-color: green;
+            margin: 50px;
+        }
+
+        #div4 {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            margin:50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="div1">
+        <div id="div2">
+            <div id="div3">
+                <div id="div4"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        // $.get('api.php',function(d){
+        //     console.log(d)
+        //     console.log(JSON.parse(d))
+        // })
+
+        $.ajax({
+            url: "api.php",
+            method: "post",
+            dataType: "json",
+            data: {name:"zhangsan",age:22},
+            success: function(d){
+                console.log(11111)
+                console.log(d)
+            }
+        })
+    </script>
+</body>
+</html>

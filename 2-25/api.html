@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>浏览器WEB程序</h1>
+
+    <ul id="goods_list">
+
+    </ul>
+
+    <script src="../jquery-3.5.1.min.js"></script>
+    <script>
+        //请求 后端的 商品列表接口
+        $.ajax({
+            url: "http://js.2006.com/2-25/api.php",
+            method: "get",
+            dataType: "json",
+            success: function(d){
+                var listr = "";
+                $.each(d,function(k,v){
+                    listr +="<li>"+ v.goods_name + "-" + v.goods_price + "</li>"
+                })
+                // 将li 插入 ul中
+                $("#goods_list").html(listr)
+            }
+        })
+
+    </script>
+
+</body>
+</html>

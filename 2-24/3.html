@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <script>
+        var obj1 = {
+            name: "zhangsan",
+            age: 22,
+            email: "zhangsan@qq.com"
+        }
+
+        //将对象字面量 转为 JSON格式（字符串）
+        var json_str = JSON.stringify(obj1)
+        console.log(json_str)
+        console.log(typeof json_str)
+
+        //把json字符串转为 js对象
+        var obj2 = JSON.parse(json_str)
+        console.log(obj2)
+
+        console.log(obj2.name)
+
+    </script>
+</body>
+</html>

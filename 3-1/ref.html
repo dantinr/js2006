@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>引用类型</h1>
+
+
+    <script>
+
+        var o1 = {}
+        o1.name = "lisi"
+
+        var o2 = {
+            name: "zhangsan",
+            age: 22,
+            "sex" : "M"
+        }
+
+
+        //var obj1 = new Object()         //使用构造函数 定义对象
+        var obj2 = {}                   // 字面量定义
+
+        //给对象添加成员 属性 方法
+        obj2.name = "zhangsan"
+        obj2.age = 22
+        obj2.hello = function(){
+            console.log("Hello world")
+        }
+
+        //console.log(obj2)
+
+        //访问对象的属性或方法
+
+        //console.log(obj2.name)
+        //obj2.hello()
+
+        var o1 = obj2
+        console.log(o1)
+        o1.sex = "M"
+        console.log(obj2)
+
+
+
+
+        // var arr1 = [11,22,33,44]
+        // console.log(arr1)
+        //
+        // var arr2 = arr1                 // 引用赋值
+        // console.log(arr1)
+        //
+        // arr2.pop()
+        // console.log(arr1)       //
+
+
+
+        // var str1 = "abc"
+        // console.log(str1)       // abc
+        //
+        // var str2 = str1
+        // str2 = "abcd"
+        // console.log(str1)       // abc
+
+
+
+    </script>
+</body>
+</html>

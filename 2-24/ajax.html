@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <script>
+
+        console.log(1111111)
+
+
+        // 1 实例化 XHR
+        var xhr = new XMLHttpRequest()
+
+        // 2 监听 readystateChange
+        xhr.onreadystatechange = function(){
+            if( xhr.readyState==4 && xhr.status==200){
+                //接收服务器的响应 json
+                var res_jsonstr = xhr.responseText
+                console.log("发送了Ajax")
+                console.log(res_jsonstr)
+            }
+        }
+
+        // 3 open
+        var api = "http://js.2006.com/2-24/api.php"     //ajax请求的接口地址
+        xhr.open("get",api)
+
+        // 4 send
+        xhr.send()
+
+
+        console.log(2222222)
+    </script>
+
+</body>
+</html>

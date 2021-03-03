@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    var obj = {
+        name: "lisi",       // 属性可能被覆盖，被修改, 删除
+        age: 33,
+        sex: "F"
+    }
+
+    console.log(obj)
+
+    Object.defineProperty(obj,"name",{
+        configurable : false            // 不可配置（删除）
+    })
+
+    Object.defineProperty(obj,"sex",{
+        writable: false             // 不可修改
+    })
+
+    Object.defineProperty(obj,"email",{
+        value : "zhangsan@qq.com"               //设置新的属性
+    })
+
+    console.log(obj)
+
+
+
+
+
+
+</script>
+</body>
+</html>

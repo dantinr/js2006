@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var book = {
+        _year: 2004,
+        edition: 1
+    }
+
+    Object.defineProperty(book,"year",{
+        get: function(){            // book.year
+            return this._year
+        },
+        set: function(v){          // book.year =
+            if(v > 2004)
+            {
+                this._year = v
+                this.edition = "xxx"
+            }
+        }
+    })
+
+    console.log(book.year)      // 读取属性
+    book.year = 123123          // 修改 属性
+
+
+</script>
+
+</body>
+</html>

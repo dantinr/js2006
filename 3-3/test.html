@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    function Animal()
+    {
+
+    }
+    Animal.prototype.level = 1
+    Animal.prototype.fun1 = function(){
+        console.log("来自Animal")
+    }
+
+    function Dog()
+    {
+
+    }
+
+    Dog.prototype = new Animal()
+    Dog.prototype.type = '狗'
+    Dog.prototype.fun2 = function(){
+        console.log("来自Dog")
+    }
+
+    function Husky()
+    {
+
+    }
+
+    Husky.prototype = new Dog()
+
+    console.log("Husky 的原型: ",Husky.prototype)
+    var h = new Husky()
+    console.log(h)
+    h.fun1()
+    h.fun2()
+
+    // var a = new Animal()
+    // console.log("a : ",a)
+    // console.log("a的__proto__ : ",a.__proto__)
+    // console.log("typeof a.__proto__ : ",typeof a.__proto__)
+    // Dog.prototype = a
+    // console.log("Dog的原型: ",Dog.prototype)
+
+
+    // //查看函数的原型
+    // console.log(typeof Person.prototype)
+    // console.log(Person.prototype)
+    //
+    // var p1 = new Person()
+    // console.log(p1)
+    // console.log(p1.__proto__)
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

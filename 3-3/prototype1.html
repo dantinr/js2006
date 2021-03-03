@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function Animal()
+    {
+
+    }
+
+    Animal.prototype.say = function(){
+        console.log("来自Animal")
+    }
+
+    function Dog()
+    {
+
+    }
+
+    Dog.prototype = new Animal()        //Dog的原型赋值为 Animal的实例
+    Dog.prototype.type = "dog"
+
+    function Husky()
+    {
+
+    }
+
+    Husky.prototype = new Dog()     // Husky 的原型赋值为 Dog 的实例
+    var h1 = new Husky()
+    console.log(h1.type)
+    h1.say()
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
